@@ -2,7 +2,7 @@ import z from "zod";
 import { RegisterService } from "@/services/register";
 import { FastifyRequest, FastifyReply } from "fastify";
 import { PrismaUsersRepository } from "@/repositories/prisma/prisma-users-repository";
-import { UserAlreadyExistsError } from "@/services/errors/user-already-exists";
+import { UserAlreadyExistsError } from "@/services/errors/user-already-exists-error";
 
 export async function register(req: FastifyRequest, reply: FastifyReply) {
   const registerUserBodySchema = z.object({
@@ -27,7 +27,7 @@ export async function register(req: FastifyRequest, reply: FastifyReply) {
       return reply.status(409).send({ message: error.message });
     }
 
-    throw error
+    throw error;
   }
 
   return reply.status(201).send();
