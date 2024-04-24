@@ -29,7 +29,7 @@ describe("Authenticate Service", () => {
   });
 
   test("should be able to authenticate with wrong e-mail", async () => {
-    expect(() =>
+    await expect(() =>
       authenticateService.execute({
         email: "email@gmail.com",
         password: "123456",
