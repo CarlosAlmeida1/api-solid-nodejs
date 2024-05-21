@@ -28,7 +28,7 @@ describe("Authenticate Service", () => {
     expect(user.id).toEqual(expect.any(String));
   });
 
-  test("should be able to authenticate with wrong e-mail", async () => {
+  test("should not be able to authenticate with wrong e-mail", async () => {
     await expect(() =>
       authenticateService.execute({
         email: "email@gmail.com",
@@ -37,7 +37,7 @@ describe("Authenticate Service", () => {
     ).rejects.toBeInstanceOf(InvalidCredentialsError);
   });
 
-  test("should be able to authenticate with wrong password", async () => {
+  test("should not be able to authenticate with wrong e-mail", async () => {
     await usersRepository.create({
       name: "Jhon Doe",
       email: "email@gmail.com",
