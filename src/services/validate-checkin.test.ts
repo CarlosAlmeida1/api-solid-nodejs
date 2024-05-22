@@ -1,9 +1,6 @@
 import { expect, test, describe, beforeEach, vi, afterEach } from "vitest";
 import { InMemoryCheckInsRepository } from "@/repositories/in-memory/in-memory-check-ins-repository";
-import { CheckInService } from "./check-in";
-import { InMemoryGymsRepository } from "@/repositories/in-memory/in-memory-gyms-repository";
 import { ValidateCheckInService } from "./validate-check-in";
-import { any } from "zod";
 import { ResourceNotFoundError } from "./errors/resource-not-found-error";
 
 let checkInsRepository: InMemoryCheckInsRepository;
