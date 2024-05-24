@@ -10,6 +10,7 @@
     "test": "vitest run --dir src/services",
     "test:watch": "vitest --dir src/services",
     "test:e2e": "vitest run --dir src/http",
+    "test:e2e:watch": "vitest --dir src/http",
     "pretest:e2e": "cd prisma/prisma-test-environment",
     "test:coverage": "vitest --coverage",
     "test:ui": "vitest --ui"
@@ -20,6 +21,7 @@
   "dependencies": {
     "@fastify/jwt": "8.0.1",
     "@prisma/client": "5.12.1",
+    "@types/supertest": "6.0.2",
     "bcryptjs": "2.4.3",
     "dayjs": "1.11.11",
     "dotenv": "16.4.5",
@@ -35,6 +37,7 @@
     "@vitest/ui": "1.5.0",
     "eslint": "^8.57.0",
     "prisma": "5.12.1",
+    "supertest": "7.0.0",
     "ts-node": "^10.9.2",
     "tsup": "^8.0.2",
     "tsx": "^4.7.2",
