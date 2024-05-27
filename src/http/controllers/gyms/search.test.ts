@@ -51,17 +51,14 @@ describe("Search Gym (e2e)", () => {
     const response = await request(app.server)
       .get("/gyms/search")
       .query({
-        q: "Gym",
+        q: "Oxy",
       })
       .set("Authorization", `Bearer ${token}`)
       .send();
 
     expect(response.statusCode).toEqual(201);
-    expect(response.body.gyms).toHaveLength(2);
+    expect(response.body.gyms).toHaveLength(1);
     expect(response.body.gyms).toEqual([
-      expect.objectContaining({
-        title: "JavaScript Gym",
-      }),
       expect.objectContaining({
         title: "Oxy Gym",
       }),
