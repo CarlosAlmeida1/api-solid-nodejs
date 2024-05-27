@@ -5,11 +5,9 @@ import { profile } from "./profile.controller";
 import { verifyJWT } from "../../middlewares/verify-jwt";
 
 export async function userRoutes(app: FastifyInstance) {
-  app.addHook("onRequest", verifyJWT);
-
   app.post("/users", register);
   app.post("/sessions", authenticate);
 
   //autenticado
-  app.get("/me", profile);
+  app.get("/me", { onRequest: [verifyJWT] }, profile);
 }
