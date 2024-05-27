@@ -5,16 +5,26 @@ import { env } from "./env";
 import fastifyJwt from "@fastify/jwt";
 import { gymRoutes } from "./http/controllers/gyms/routes";
 import { checkInRoutes } from "./http/controllers/check-ins/routes";
+import fastifyCookie from "@fastify/cookie";
 
 export const app = fastify();
+
+app.register(fastifyJwt, {
+  secret: env.JWT_SECRET,
+  cookie: {
+    cookieName: "refreshToken",
+    signed: false, // nao é cookie assinado
+  },
+  sign: {
+    expiresIn: "10m",
+  },
+});
+
+app.register(fastifyCookie);
 
 app.register(userRoutes);
 app.register(gymRoutes);
 app.register(checkInRoutes);
-
-app.register(fastifyJwt, {
-  secret: env.JWT_SECRET,
-});
 
 app.setErrorHandler((error, _, reply) => {
   if (error instanceof ZodError) {
